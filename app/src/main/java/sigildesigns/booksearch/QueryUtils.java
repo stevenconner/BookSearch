@@ -142,7 +142,7 @@ public class QueryUtils {
 
                 // Loop through the authorsArray and add them to the authors string
                 // If there are no authors, replace with "No author listed"
-                if (authorsArray.length() > 0) {
+                if (bookVolume.has("authors")) {
                     for (int a = 0; a < authorsArray.length(); a++) {
                         authors = authors + authorsArray.getString(a);
                         // If not at the end of the list of authors then add a comma and space
