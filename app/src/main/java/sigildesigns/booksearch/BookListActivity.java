@@ -12,9 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 public class BookListActivity extends AppCompatActivity implements LoaderManager
         .LoaderCallbacks<List<Book>> {
@@ -57,6 +61,7 @@ public class BookListActivity extends AppCompatActivity implements LoaderManager
 
         Intent intent = getIntent();
         String keyWord = intent.getStringExtra(KEYWORD_EXTRA);
+        keyWord = keyWord.replace(" ","+");
         mQueryUrl = "https://www.googleapis.com/books/v1/volumes?q=" + keyWord;
 
         // Find a reference to the {@link ListView} in the layout
@@ -82,6 +87,11 @@ public class BookListActivity extends AppCompatActivity implements LoaderManager
              * valid because this activity implements the LoaderCallbacks interface).
              */
             loaderManager.initLoader(BOOK_LOADER_ID, null, this);
+        } else {
+            // Hide the listview and replace it with the emptytextview
+            bookListView.setVisibility(GONE);
+            TextView emptyTextView = (TextView) findViewById(R.id.empty_list_item);
+            emptyTextView.setVisibility(VISIBLE);
         }
 
         // Set an item click listener on the ListView, which sends an intent to a web browser

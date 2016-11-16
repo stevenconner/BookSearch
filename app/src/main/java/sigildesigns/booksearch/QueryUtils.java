@@ -141,17 +141,22 @@ public class QueryUtils {
                 String authors = "Written By: ";
 
                 // Loop through the authorsArray and add them to the authors string
-                for (int a = 0; a < authorsArray.length(); a++) {
-                    authors = authors + authorsArray.getString(a);
-                    // If not at the end of the list of authors then add a comma and space
-                    // between names
-                    if (a != authorsArray.length() - 1) {
-                        authors = authors + ", ";
+                // If there are no authors, replace with "No author listed"
+                if (authorsArray.length() > 0) {
+                    for (int a = 0; a < authorsArray.length(); a++) {
+                        authors = authors + authorsArray.getString(a);
+                        // If not at the end of the list of authors then add a comma and space
+                        // between names
+                        if (a != authorsArray.length() - 1) {
+                            authors = authors + ", ";
+                        }
                     }
-                }
-                // Add the book to the books ArrayList
-                books.add(new Book(title, authors, url));
+                    // Add the book to the books ArrayList
+                    books.add(new Book(title, authors, url));
 
+                } else {
+                    authors = "No author listed";
+                }
             }
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the try block
