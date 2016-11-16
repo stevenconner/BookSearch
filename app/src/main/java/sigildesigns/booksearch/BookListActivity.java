@@ -66,6 +66,8 @@ public class BookListActivity extends AppCompatActivity implements LoaderManager
 
         // Find a reference to the {@link ListView} in the layout
         ListView bookListView = (ListView) findViewById(R.id.list);
+        // Set the empty view in case there's no results
+        bookListView.setEmptyView(findViewById(R.id.noresults));
 
         // Create a new adapter that takes an empty list of books as input
         mAdapter = new BookAdapter(this, new ArrayList<Book>());

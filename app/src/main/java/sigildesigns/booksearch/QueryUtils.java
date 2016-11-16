@@ -136,13 +136,13 @@ public class QueryUtils {
                 String title = bookVolume.getString("title");
                 Log.v(LOG_TAG, title);
                 String url = bookVolume.getString("infoLink");
-                // Extract the array for authors
-                JSONArray authorsArray = bookVolume.getJSONArray("authors");
-                String authors = "Written By: ";
-
                 // Loop through the authorsArray and add them to the authors string
                 // If there are no authors, replace with "No author listed"
+                String authors = "Written By: ";
                 if (bookVolume.has("authors")) {
+                    // Extract the array for authors
+                    JSONArray authorsArray = bookVolume.getJSONArray("authors");
+
                     for (int a = 0; a < authorsArray.length(); a++) {
                         authors = authors + authorsArray.getString(a);
                         // If not at the end of the list of authors then add a comma and space
@@ -151,12 +151,11 @@ public class QueryUtils {
                             authors = authors + ", ";
                         }
                     }
-                    // Add the book to the books ArrayList
-                    books.add(new Book(title, authors, url));
-
                 } else {
                     authors = "No author listed";
                 }
+                // Add the book to the books ArrayList
+                books.add(new Book(title, authors, url));
             }
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the try block

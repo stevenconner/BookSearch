@@ -13,7 +13,15 @@
         android:id="@+id/empty_list_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/nodata"
+        android:visibility="gone">
+    </TextView>
+    <TextView
+        android:id="@+id/noresults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/emptylist"
         android:visibility="gone">
     </TextView>
+
 </RelativeLayout>

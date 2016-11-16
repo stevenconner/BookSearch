@@ -3,5 +3,6 @@
     <string name="welcome_text">Welcome to the book search, please enter a keyword.</string>
     <string name="keyword">Search by keyword</string>
     <string name="search">Search</string>
-    <string name="emptylist">There was no data to display, are you connected to the internet?</string>
+    <string name="emptylist">Your search returned no results, please try again.</string>
+    <string name="nodata">There was no data to display, are you connected to the internet?</string>
 </resources>
