@@ -61,7 +61,7 @@ public class BookListActivity extends AppCompatActivity implements LoaderManager
 
         Intent intent = getIntent();
         String keyWord = intent.getStringExtra(KEYWORD_EXTRA);
-        keyWord = keyWord.replace(" ","+");
+        keyWord = keyWord.replaceAll(" ","%20");
         mQueryUrl = "https://www.googleapis.com/books/v1/volumes?q=" + keyWord;
 
         // Find a reference to the {@link ListView} in the layout
