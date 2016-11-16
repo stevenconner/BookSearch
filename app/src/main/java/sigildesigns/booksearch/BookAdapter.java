@@ -1,12 +1,10 @@
 package sigildesigns.booksearch;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,13 +19,13 @@ public class BookAdapter extends ArrayAdapter<Book> {
         super(context, 0, books);
     }
 
-    @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
         if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent,
+                    false);
         }
 
         // Get the {@link Book} object located at this position in the list
@@ -42,11 +40,6 @@ public class BookAdapter extends ArrayAdapter<Book> {
         TextView authorTextView = (TextView) listItemView.findViewById(R.id.author_of_book);
         // Set the author(s) to that TextView
         authorTextView.setText(currentBook.getmAuthors());
-
-        // Find the ImageView in the list_item.xml layout with the ID thumbnail
-        ImageView thumbnailImageView = (ImageView) listItemView.findViewById(R.id.thumbnail);
-        // Set the image to that ImageView
-        thumbnailImageView.setImageURI(currentBook.getmThumbnail());
 
         return listItemView;
     }
